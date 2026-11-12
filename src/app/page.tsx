@@ -47,11 +47,11 @@ const projects = [
     name: "The Hollow",
     tag: "Unity arena game and editor tooling",
     year: "Oct 2026",
-    live: null,
-    repo: null,
+    live: "https://hollow.techboy.dev",
+    repo: "https://github.com/ebub323/hollow-web",
     blurb:
       "A wave-based arena game: 7,740 lines of C# across 45 scripts with a multi-phase boss, spawn management and a cued audio system. Plus 3,657 lines of custom editor tooling that assembles the arena, zones, lighting and UI procedurally instead of by hand.",
-    proof: "42 commits · private repo",
+    proof: "42 commits · plays in the browser, 83 MB build · third-party art credited in-game",
     stack: ["C#", "Unity 6"],
   },
 ];
