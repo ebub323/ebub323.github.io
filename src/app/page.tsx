@@ -75,11 +75,11 @@ export default function Home() {
     <main className="relative mx-auto w-full max-w-5xl px-6 pb-24 pt-10 sm:px-10">
       <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]" />
 
-      <nav className="flex items-center justify-between font-mono text-sm text-muted">
+      <nav className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 font-mono text-sm text-muted">
         <a href="#" className="text-paper">
           <span className="text-signal">~</span>/techboy<span className="text-signal">.dev</span>
         </a>
-        <div className="flex gap-5">
+        <div className="flex gap-4 sm:gap-5">
           <a href="#work" className="hover:text-paper">work</a>
           <a href="#about" className="hover:text-paper">about</a>
           <a href="/Ebube_Eze_Resume.pdf" className="hover:text-paper">resume</a>
