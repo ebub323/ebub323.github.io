@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 const title = "Ebube Eze · Techboy.dev";
 const description =
-  "Project portfolio of Ebube Eze: Applyr, CreditBridge, ShiftStack, Skolmark and The Hollow, with a stage-by-stage look at how each one works.";
+  "Project portfolio of Ebube Eze: Applyr, CreditBridge, ShiftStack, Skolmark and The Hollow Games, with a stage-by-stage look at how each one works.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://techboy.dev"),
