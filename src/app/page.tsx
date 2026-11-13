@@ -2,94 +2,102 @@ import Explorer from "@/components/Explorer";
 import { projects } from "./projects";
 
 const stack: Record<string, string[]> = {
-  lang: ["TypeScript", "JavaScript", "Python", "Java", "C++", "C#", "SQL"],
-  frameworks: ["React", "React Native", "Next.js", "Node.js", "Tailwind", "Flask", "Django", "Unity"],
-  infra: ["PostgreSQL", "Supabase", "MySQL", "AWS", "Google Cloud", "Docker", "Terraform", "GitHub Actions", "Linux"],
+  Languages: ["TypeScript", "JavaScript", "Python", "Java", "C++", "C#", "SQL"],
+  Frameworks: ["React", "React Native", "Next.js", "Node.js", "Tailwind", "Flask", "Django", "Unity"],
+  Infrastructure: ["PostgreSQL", "Supabase", "MySQL", "AWS", "Google Cloud", "Docker", "Terraform", "GitHub Actions", "Linux"],
 };
+
+const stats = [
+  ["5", "projects shipped"],
+  ["625+", "automated tests"],
+  ["3", "platforms: web, iOS, Android"],
+  ["40+", "technologies"],
+];
 
 export default function Home() {
   return (
-    <main className="relative mx-auto w-full max-w-5xl px-6 pb-24 pt-10 sm:px-10">
-      <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px]" />
+    <>
+      <header className="sticky top-0 z-30 border-b border-hairline bg-canvas/85 backdrop-blur">
+        <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-6 sm:px-10">
+          <a href="#" className="text-[15px] font-semibold tracking-tight text-ink">
+            techboy<span className="text-mute">.dev</span>
+          </a>
+          <div className="flex items-center gap-6 text-sm text-body">
+            <a href="#projects" className="hover:text-ink">Projects</a>
+            <a href="#stack" className="hover:text-ink">Stack</a>
+            <a href="#contact" className="rounded-full bg-ink px-4 py-1.5 font-medium text-white hover:bg-[#333]">Contact</a>
+          </div>
+        </nav>
+      </header>
 
-      <nav className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 font-mono text-sm text-muted">
-        <a href="#" className="text-paper">
-          <span className="text-signal">~</span>/techboy<span className="text-signal">.dev</span>
-        </a>
-        <div className="flex gap-4 sm:gap-5">
-          <a href="#projects" className="hover:text-paper">projects</a>
-          <a href="#stack" className="hover:text-paper">stack</a>
-          <a href="#contact" className="hover:text-paper">contact</a>
-        </div>
-      </nav>
-
-      <section className="mt-20 sm:mt-28">
-        <div className="max-w-2xl rounded-xl border border-line bg-ink-2/80 p-5 font-mono text-sm leading-relaxed shadow-2xl shadow-black/40">
-          <p><span className="text-signal">$</span> whoami</p>
-          <p className="text-paper/90">ebube eze — software engineer</p>
-          <p className="mt-2"><span className="text-signal">$</span> ls projects/</p>
-          <p className="text-paper/90">{projects.map((p) => p.id).join("  ")}</p>
-          <p className="mt-2"><span className="text-signal">$</span> cat README<span className="cursor" /></p>
-        </div>
-        <h1 className="mt-10 max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl">
-          Software whose every number comes with its reasons.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Web, mobile and game projects, built end to end. Pick one below to see how it works,
-          stage by stage.
-        </p>
-        <dl className="mt-12 grid grid-cols-2 gap-6 border-t border-line pt-6 font-mono text-sm sm:grid-cols-4">
-          {[
-            ["5", "projects"],
-            ["625+", "automated tests"],
-            ["3", "platforms (web, iOS, Android)"],
-            ["40+", "technologies"],
-          ].map(([n, l]) => (
-            <div key={l}>
-              <dt className="text-2xl text-paper">{n}</dt>
-              <dd className="mt-1 text-muted">{l}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section id="projects" className="mt-24 scroll-mt-24">
-        <h2 className="font-mono text-sm text-signal">// projects</h2>
-        <Explorer />
-      </section>
-
-      <section id="stack" className="mt-24 scroll-mt-24">
-        <h2 className="font-mono text-sm text-signal">// stack</h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
-          {Object.entries(stack).map(([group, items]) => (
-            <div key={group} className="card rounded-xl p-5">
-              <p className="font-mono text-xs uppercase tracking-wider text-muted">{group}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {items.map((s) => (
-                  <span key={s} className="rounded-md bg-ink-3 px-2.5 py-1 text-sm text-paper/90">{s}</span>
-                ))}
+      <main className="mx-auto w-full max-w-5xl px-6 pb-24 sm:px-10">
+        <section className="relative pt-24 sm:pt-32">
+          <div className="mesh pointer-events-none absolute inset-x-0 -top-10 -z-10 h-[460px] opacity-80" aria-hidden />
+          <p className="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas/80 px-3 py-1 font-mono text-xs text-body">
+            <span className="h-1.5 w-1.5 rounded-full bg-link" /> Ebube Eze · Software engineer
+          </p>
+          <h1 className="mt-6 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-7xl">
+            Software whose every number comes with its reasons.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-7 text-body">
+            Web, mobile and game projects, built end to end. Pick one below to see how it works,
+            stage by stage.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium">
+            <a href="#projects" className="rounded-full bg-ink px-5 py-2.5 text-white hover:bg-[#333]">See the projects</a>
+            <a href="https://github.com/ebub323" className="rounded-full border border-hairline-strong bg-canvas px-5 py-2.5 text-ink hover:border-ink">GitHub</a>
+          </div>
+          <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-hairline bg-hairline sm:grid-cols-4">
+            {stats.map(([n, l]) => (
+              <div key={l} className="bg-canvas p-5">
+                <dt className="text-3xl font-semibold tracking-tight">{n}</dt>
+                <dd className="mt-1 text-sm text-mute">{l}</dd>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </dl>
+        </section>
 
-      <section id="contact" className="mt-24 scroll-mt-24 rounded-2xl border border-line bg-ink-2 p-8 sm:p-12">
-        <h2 className="font-mono text-sm text-signal">// contact</h2>
-        <p className="mt-4 max-w-xl text-2xl font-semibold leading-snug sm:text-3xl">
-          Want a walkthrough of something private, or to build something together?
-        </p>
-        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm">
-          <a href="mailto:ogennaeugene@gmail.com" className="link-u text-paper">ogennaeugene@gmail.com</a>
-          <a href="https://github.com/ebub323" className="link-u text-paper">github.com/ebub323</a>
-          <a href="https://www.linkedin.com/in/ebube1995" className="link-u text-paper">linkedin.com/in/ebube1995</a>
-        </div>
-      </section>
+        <section id="projects" className="mt-28 scroll-mt-24">
+          <p className="font-mono text-xs uppercase tracking-wider text-mute">Projects · {projects.length}</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">What I&rsquo;ve built</h2>
+          <Explorer />
+        </section>
 
-      <footer className="mt-16 flex flex-wrap justify-between gap-2 font-mono text-xs text-muted">
-        <span>© {new Date().getFullYear()} Ebube Eze</span>
-        <span>Next.js static export · GitHub Pages · no trackers</span>
-      </footer>
-    </main>
+        <section id="stack" className="mt-28 scroll-mt-24">
+          <p className="font-mono text-xs uppercase tracking-wider text-mute">Stack</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">What I build with</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {Object.entries(stack).map(([group, items]) => (
+              <div key={group} className="card rounded-xl p-6">
+                <p className="text-sm font-medium">{group}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {items.map((s) => (
+                    <span key={s} className="rounded-md bg-soft-2 px-2.5 py-1 text-[13px] text-body">{s}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="relative mt-28 scroll-mt-24 overflow-hidden rounded-2xl border border-hairline bg-soft p-8 sm:p-14">
+          <div className="mesh pointer-events-none absolute -right-24 -top-24 h-72 w-96 opacity-60" aria-hidden />
+          <p className="relative font-mono text-xs uppercase tracking-wider text-mute">Contact</p>
+          <p className="relative mt-3 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl">
+            Want a walkthrough of something private, or to build something together?
+          </p>
+          <div className="relative mt-8 flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm">
+            <a href="mailto:ogennaeugene@gmail.com" className="link-u">ogennaeugene@gmail.com</a>
+            <a href="https://github.com/ebub323" className="link-u">github.com/ebub323</a>
+            <a href="https://www.linkedin.com/in/ebube1995" className="link-u">linkedin.com/in/ebube1995</a>
+          </div>
+        </section>
+
+        <footer className="mt-16 flex flex-wrap justify-between gap-2 border-t border-hairline pt-6 font-mono text-xs text-mute">
+          <span>© {new Date().getFullYear()} Ebube Eze</span>
+          <span>Next.js static export · GitHub Pages · no trackers</span>
+        </footer>
+      </main>
+    </>
   );
 }

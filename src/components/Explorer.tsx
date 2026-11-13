@@ -17,77 +17,69 @@ export default function Explorer() {
   const p = projects[i];
 
   return (
-    <div className="mt-6 overflow-hidden rounded-xl border border-line bg-ink-2">
-      <div className="flex items-center gap-2 border-b border-line bg-ink-3 px-4 py-2.5 font-mono text-xs text-muted">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-        <span className="ml-3">~/projects/{p.id} — how it works</span>
-      </div>
-
-      <div className="grid md:grid-cols-[220px_1fr]">
-        <ul role="tablist" className="flex gap-1 overflow-x-auto border-b border-line p-2 font-mono text-sm md:flex-col md:border-b-0 md:border-r">
+    <div className="mt-8 overflow-hidden rounded-xl border border-hairline bg-canvas">
+      <div className="grid md:grid-cols-[230px_1fr]">
+        <ul role="tablist" className="flex gap-1 overflow-x-auto border-b border-hairline bg-soft p-2 text-sm md:flex-col md:border-b-0 md:border-r">
           {projects.map((q, n) => (
             <li key={q.id}>
               <button
                 role="tab"
                 aria-selected={n === i}
                 onClick={() => { setI(n); setStep(0); }}
-                className={`w-full whitespace-nowrap rounded-md px-3 py-2 text-left transition-colors ${n === i ? "bg-ink-3 text-signal" : "text-muted hover:text-paper"}`}
+                className={`w-full whitespace-nowrap rounded-md px-3 py-2 text-left font-medium transition-colors ${n === i ? "bg-canvas text-ink shadow-[0_0_0_1px_var(--color-hairline)]" : "text-body hover:bg-soft-2 hover:text-ink"}`}
               >
-                <span className="text-signal-dim">{n === i ? "▸" : " "}</span> {q.name}
+                {q.name}
               </button>
             </li>
           ))}
         </ul>
 
         <div className="p-6 sm:p-8">
-          <p className="font-mono text-xs text-amber">{p.tag}</p>
-          <h3 className="mt-1 text-2xl font-semibold">{p.name}</h3>
-          <p className="mt-3 max-w-2xl leading-relaxed text-paper/85">{p.summary}</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-mute">{p.tag}</p>
+          <h3 className="mt-2 text-3xl font-semibold tracking-[-0.04em]">{p.name}</h3>
+          <p className="mt-3 max-w-2xl leading-7 text-body">{p.summary}</p>
 
-          <p className="mt-8 font-mono text-xs uppercase tracking-wider text-muted">pipeline — click a stage</p>
+          <p className="mt-8 font-mono text-xs uppercase tracking-wider text-mute">Pipeline · click a stage</p>
           <ol className="mt-3 grid gap-2 sm:grid-cols-4">
             {p.flow.map((f, n) => (
               <li key={f.label}>
                 <button
                   onClick={() => setStep(n)}
-                  className={`w-full rounded-md border px-3 py-2 text-left font-mono text-sm transition-colors ${n === step ? "border-signal text-signal" : "border-line text-muted hover:border-muted"} ${n <= step ? "bg-ink-3" : ""}`}
+                  className={`w-full rounded-lg border px-3 py-2 text-left text-sm font-medium transition-colors ${n === step ? "border-ink bg-ink text-white" : "border-hairline text-body hover:border-hairline-strong"} ${n < step ? "bg-soft-2" : ""}`}
                 >
-                  <span className="text-xs opacity-60">0{n + 1}</span> {f.label}
+                  <span className="mr-1.5 font-mono text-xs opacity-60">0{n + 1}</span>{f.label}
                 </button>
               </li>
             ))}
           </ol>
-          <p className="mt-4 min-h-[3rem] rounded-md border border-line bg-ink px-4 py-3 font-mono text-sm leading-relaxed text-paper/90">
-            <span className="text-signal">$ </span>
+          <p className="mt-4 min-h-[3rem] rounded-lg border border-hairline bg-soft px-4 py-3 text-sm leading-6 text-body">
             {p.flow[step].detail}
           </p>
 
-          <ul className="mt-6 space-y-1.5 text-sm text-paper/85">
+          <ul className="mt-6 space-y-2 text-sm text-body">
             {p.facts.map((f) => (
-              <li key={f}><span className="font-mono text-signal">+ </span>{f}</li>
+              <li key={f} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink" />{f}</li>
             ))}
           </ul>
 
-          <p className="mt-6 font-mono text-xs text-amber">{p.proof}</p>
+          <p className="mt-6 font-mono text-xs text-mute">{p.proof}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {p.stack.map((s) => (
-              <span key={s} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-xs text-muted">{s}</span>
+              <span key={s} className="rounded-full border border-hairline px-2.5 py-0.5 font-mono text-xs text-body">{s}</span>
             ))}
           </div>
-          <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
             {p.live && (
-              <a href={p.live} className="inline-flex items-center gap-1 rounded-md bg-signal px-4 py-2 text-ink hover:brightness-110">
-                launch {p.live.replace("https://", "")} <Arrow />
+              <a href={p.live} className="inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2 text-white hover:bg-[#333]">
+                Launch {p.live.replace("https://", "")} <Arrow />
               </a>
             )}
             {p.repo && (
-              <a href={p.repo} className="inline-flex items-center gap-1 rounded-md border border-line px-4 py-2 hover:border-muted">
-                source <Arrow />
+              <a href={p.repo} className="inline-flex items-center gap-1.5 rounded-full border border-hairline-strong px-5 py-2 hover:border-ink">
+                Source <Arrow />
               </a>
             )}
-            {!p.live && !p.repo && <span className="text-muted">private repo · ask for a walkthrough</span>}
+            {!p.live && !p.repo && <span className="text-mute">Private repo · ask for a walkthrough</span>}
           </div>
         </div>
       </div>

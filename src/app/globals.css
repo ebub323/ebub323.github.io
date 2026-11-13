@@ -1,69 +1,60 @@
 @import "tailwindcss";
 
+/* Vercel-inspired tokens: ink-on-white, hairlines, one blue, mesh gradient as the only decoration. */
 @theme inline {
-  --color-ink: #0b0d10;
-  --color-ink-2: #12151a;
-  --color-ink-3: #1a1e25;
-  --color-line: #262b34;
-  --color-paper: #e8e6df;
-  --color-muted: #8b919c;
-  --color-signal: #7ee787;
-  --color-signal-dim: #2b4a32;
-  --color-amber: #f2c054;
+  --color-canvas: #ffffff;
+  --color-soft: #fafafa;
+  --color-soft-2: #f5f5f5;
+  --color-ink: #171717;
+  --color-body: #4d4d4d;
+  --color-mute: #888888;
+  --color-hairline: #ebebeb;
+  --color-hairline-strong: #a1a1a1;
+  --color-link: #0070f3;
+  --color-link-soft: #d3e5ff;
+  --color-develop: #007cf0;
+  --color-develop-end: #00dfd8;
+  --color-preview: #7928ca;
+  --color-preview-end: #ff0080;
+  --color-ship: #ff4d4d;
+  --color-ship-end: #f9cb28;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(126, 231, 135, 0.07), transparent 60%),
-    var(--color-ink);
-}
-
-::selection {
-  background: var(--color-signal);
+  background: var(--color-canvas);
   color: var(--color-ink);
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+::selection { background: var(--color-ink); color: #f2f2f2; }
+
+.mesh {
+  background:
+    radial-gradient(40% 50% at 18% 30%, rgba(0, 124, 240, 0.28), transparent 70%),
+    radial-gradient(38% 46% at 52% 18%, rgba(0, 223, 216, 0.26), transparent 70%),
+    radial-gradient(40% 50% at 82% 34%, rgba(121, 40, 202, 0.22), transparent 70%),
+    radial-gradient(36% 44% at 66% 70%, rgba(255, 0, 128, 0.18), transparent 70%),
+    radial-gradient(34% 40% at 30% 74%, rgba(249, 203, 40, 0.2), transparent 70%);
+  filter: blur(28px);
 }
 
 .card {
-  background: linear-gradient(180deg, var(--color-ink-2), var(--color-ink));
-  border: 1px solid var(--color-line);
-  transition: border-color 160ms ease, transform 160ms ease;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
-.card:hover {
-  border-color: #3a4150;
-  transform: translateY(-2px);
-}
+.card:hover { border-color: var(--color-hairline-strong); box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.18); }
 
 .link-u {
   text-decoration: underline;
-  text-decoration-color: rgba(126, 231, 135, 0.45);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 160ms ease;
+  text-decoration-color: var(--color-hairline-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 160ms ease, color 160ms ease;
 }
-.link-u:hover {
-  text-decoration-color: var(--color-signal);
-}
+.link-u:hover { text-decoration-color: var(--color-link); color: var(--color-link); }
 
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-.cursor::after {
-  content: "_";
-  color: var(--color-signal);
-  animation: blink 1.1s steps(1) infinite;
-}
+:focus-visible { outline: 2px solid var(--color-link); outline-offset: 2px; }
