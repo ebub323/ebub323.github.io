@@ -88,7 +88,7 @@ export const projects: Project[] = [
     id: "the-hollow",
     name: "The Hollow Games",
     tag: "Third-person horror game, Unity and web",
-    live: "http://hollowgames.techboy.dev",
+    live: "https://hollowgames.techboy.dev",
     repo: "https://github.com/ebub323/hollow-games",
     summary:
       "A third-person horror archery game built in Unity, then ported to the browser with three.js. Pick one of 8 regions, fight through a four-chapter story, and take on other tributes in a peer-to-peer multiplayer arena.",
