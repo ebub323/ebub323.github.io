@@ -99,7 +99,7 @@ export const projects: Project[] = [
       { label: "explain", detail: "The activity log answers “Why did this happen?” for every change." },
     ],
     facts: ["Simulator and real home share one HomeConnector interface", "AI companion proposes; nothing runs until you approve", "Five guided story scenarios, from Rainy Reading Day to Who Joined the Wi-Fi?"],
-    proof: "99 tests across the engine, planner and connector · private repo",
+    proof: "117 tests across the engine, planner and connector · private repo",
     stack: ["TypeScript", "React", "Zod", "Node.js", "Vitest"],
   },
   {
