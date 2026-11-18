@@ -1,17 +1,17 @@
 import Explorer from "@/components/Explorer";
-import { projects } from "./projects";
+import { projects, more } from "./projects";
 
 const stack: Record<string, string[]> = {
-  Languages: ["TypeScript", "JavaScript", "Python", "Java", "C++", "C#", "SQL"],
-  Frameworks: ["React", "React Native", "Next.js", "Node.js", "Tailwind", "Flask", "Django", "Unity"],
-  Infrastructure: ["PostgreSQL", "Supabase", "MySQL", "AWS", "Google Cloud", "Docker", "Terraform", "GitHub Actions", "Linux"],
+  Languages: ["TypeScript", "JavaScript", "Python", "Java", "C++", "C#", "Swift", "SQL"],
+  Frameworks: ["React", "React Native", "Next.js", "Node.js", "Electron", "Hono", "Tailwind", "Flask", "Django", "Unity", "three.js"],
+  Infrastructure: ["PostgreSQL", "Supabase", "MySQL", "AWS", "Google Cloud", "Cloudflare Workers", "Docker", "Terraform", "GitHub Actions", "Tailscale", "Linux"],
 };
 
 const stats = [
-  ["5", "projects shipped"],
-  ["625+", "automated tests"],
-  ["3", "platforms: web, iOS, Android"],
-  ["40+", "technologies"],
+  [String(projects.length + more.length), "projects built"],
+  ["740+", "automated tests"],
+  ["4", "platforms: web, iOS, Android, Mac"],
+  ["45+", "technologies"],
 ];
 
 export default function Home() {
@@ -40,7 +40,7 @@ export default function Home() {
             Software whose every number comes with its reasons.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-7 text-body">
-            Web, mobile and game projects, built end to end. Pick one below to see how it works,
+            Web, mobile, desktop, game and infrastructure projects, built end to end. Pick one below to see how it works,
             stage by stage.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm font-medium">
@@ -61,6 +61,19 @@ export default function Home() {
           <p className="font-mono text-xs uppercase tracking-wider text-mute">Projects · {projects.length}</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">What I&rsquo;ve built</h2>
           <Explorer />
+
+          <p className="mt-14 font-mono text-xs uppercase tracking-wider text-mute">Also built</p>
+          <ul className="mt-4 grid gap-px overflow-hidden rounded-xl border border-hairline bg-hairline sm:grid-cols-2">
+            {more.map((m) => (
+              <li key={m.name} className="bg-canvas p-5">
+                <p className="font-medium">
+                  {m.href ? <a href={m.href} className="link-u">{m.name}</a> : m.name}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-body">{m.what}</p>
+                <p className="mt-2 font-mono text-xs text-mute">{m.stack}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section id="stack" className="mt-28 scroll-mt-24">
